@@ -1,5 +1,5 @@
 {
-  "name": "burger",
+  "name": "burger-bucketlist",
   "version": "1.0.0",
   "description": "Restaurant app that lets users input the names of burgers they'd like to eat, and displays whether said burgers had been eaten.",
   "main": "server.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WesPres1990/burger.git"
+    "url": "git+https://github.com/WesPres1990/Burger-Bucketlist.git"
   },
   "keywords": [
     "burger",
@@ -19,9 +19,9 @@
   "author": "Wesley Hutchins",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/WesPres1990/burger/issues"
+    "url": "https://github.com/WesPres1990/Burger-Bucketlist/issues"
   },
-  "homepage": "https://github.com/WesPres1990/burger#readme",
+  "homepage": "https://github.com/WesPres1990/Burger-Bucketlist#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
