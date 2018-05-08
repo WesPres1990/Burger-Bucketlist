@@ -6,8 +6,10 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 // Create all our routes and set up logic within those routes where required.
+
+// Get all burgers in database and list them on the page as "Listed Burgers"
 router.get("/", function(req, res) {
-  burger.all(function(data) {
+  burger.selectAll(function(data) {
     var hbsObject = {
       burgers: data
     };
@@ -16,46 +18,36 @@ router.get("/", function(req, res) {
   });
 });
 
+// Post added burgers to the database and insert into the "Listed Burgers"
 router.post("/api/burgers", function(req, res) {
-  burger.insert([
-    "burger_name", "devoured"
-  ], [
-    req.body.burger_name, req.body.devoured
-  ], function(result) {
-    // Send back the ID of the new quote
+  var condition = req.body.burger_name
+
+  console.log(condition);
+
+  burger.insertOne(condition, function(result) {
+    // Send back the ID
     res.json({ id: result.insertId });
   });
 });
 
-router.put("/api/burgers/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
+// Remove burgers from "Listed Burger" and place them in "Devoured Burger's"
+router.post("/api/burgers/:id", function(req, res) {
+  var condition = req.params.id;
 
-  console.log("condition", condition);
+  console.log(condition);
 
-  burger.update({
-    devoured: req.body.devoured
-  }, condition, function(result) {
-    if (result.changedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
-    }
+  burger.updateOne(condition, function(result) {
+      res.redirect("/");
   });
 });
 
-// router.delete("/api/cats/:id", function(req, res) {
-//   var condition = "id = " + req.params.id;
+// Delete devoured burger's (does not work)
+router.delete("/api/burgers/delete/:id", (req, res) => {
+  var condition = req.params.id;
 
-//   cat.delete(condition, function(result) {
-//     if (result.affectedRows == 0) {
-//       // If no rows were changed, then the ID must not exist, so 404
-//       return res.status(404).end();
-//     } else {
-//       res.status(200).end();
-//     }
-//   });
-// });
+  burger.deleteOne(condition, function(result) {
+    res.json({ id: result.deleteId });
+  });
+});
 
-// Export routes for server.js to use.
 module.exports = router;

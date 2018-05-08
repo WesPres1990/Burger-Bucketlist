@@ -1,0 +1,65 @@
+body{
+    background-color: burlywood 
+}
+
+.jumbotron {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    padding: 0;
+    margin-bottom: 0px;
+    font-family: "Cormorant SC";
+    box-shadow: 10px 5px 20px 2px lightslategrey;
+}
+  
+.jumbotron .overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: auto;
+    background: linear-gradient(#333, black);
+    opacity: 0.7;
+}
+  
+.jumbotron .background-image {
+    height: 100%;
+    background-image: url("../img/BurgerKing_HeroImage.jpg");
+    background-size: cover;
+    background-position: 0in;
+}
+
+.jumbotron .caption {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    text-align: center;
+  }
+  
+.jumbotron .caption h1,
+.jumbotron .caption p {
+    color: white;
+}
+  
+.jumbotron h1 {
+    font-size: 80px;
+    font-weight: 800;
+}
+
+.row.text-center h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+
+.row.text-center li{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15pt;
+}
+
+.row.text-center form.create-form{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15pt;
+}
