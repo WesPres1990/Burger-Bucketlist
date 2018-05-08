@@ -1,0 +1,62 @@
+{{!-- Jumbotron --}}
+<div class="jumbotron text-center">
+    <div class="overlay"></div>
+    <div class="background-image"></div>
+    <div class="caption">
+        <h1>Burger Bucketlist</h1>
+    </div>
+</div>
+
+{{!-- Burger's --}}
+<div class="row text-center">
+
+    {{!-- Burger's Listed --}}
+    <div class="col-md-6">
+        <h2>Burgers Listed</h2>
+        <ul>
+            {{#each burgers}}
+                {{#unless devoured}}
+                    <li>{{burger_name}}
+                        <form action="/api/burgers/{{this.id}}" method="POST">
+                            <button class="devoured" data-id="{{this.id}}">Devour!</button>
+                        </form>
+                        {{!-- <p class='listed-burger'>{{id}}. {{burger_name}}
+                            <button class='devoured' data-id='{{this.id}}'>Devour It!</button>
+                        </p> --}}
+                    </li>
+                {{/unless}}
+            {{/each}}
+        </ul>
+    </div>
+  
+    {{!-- Burger's Devoured --}}
+    <div class="col-md-6">
+        <h2>Burgers Devoured</h2>
+        <ul>
+            {{#each burgers}}
+                {{#if devoured}}
+                    <li>
+                        {{burger_name}}
+                        <form action="/api/burgers/delete/{{this.id}}" method="DELETE">
+                            <button class="remove" data-id="{{this.id}}">Delete!</button>
+                        </form>
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+</div>
+
+{{!-- Burger Input --}}
+<div class="row text-center">
+    <div class="col-md-12">
+        <h2>Add a Burger</h2>
+        <form class="create-form">
+            <div class="form-group">
+                <label for="bgr">Burger Name:</label>
+                <input type="text" id="bgr" name="burger_name">
+            </div>
+            <button type="submit">Add Burger</button>
+        </form>
+    </div>
+</div>
